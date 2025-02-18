@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://by45yp3nu5l1t"]
+
+[ext_resource type="PackedScene" uid="uid://r3p74t3jtwtm" path="res://scenes/player.tscn" id="1_3xngw"]
+[ext_resource type="Script" path="res://scripts/UI.gd" id="2_7gphw"]
+[ext_resource type="PackedScene" uid="uid://d85n6xrsfsrv" path="res://scenes/world_barrier.tscn" id="3_i5m5d"]
+[ext_resource type="Script" path="res://scripts/floor_roof.gd" id="3_sqxo7"]
+[ext_resource type="Script" path="res://scripts/object_spawner.gd" id="5_0pi0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22hd1"]
+size = Vector2(34, 668)
+
+[node name="main" type="Node2D"]
+
+[node name="RigidBody2D" parent="." instance=ExtResource("1_3xngw")]
+top_level = true
+gravity_scale = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.3
+anchor_bottom = 0.1
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_7gphw")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="count_hitbox" type="Area2D" parent="CanvasLayer/Control"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(481.8, -63.8)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/count_hitbox"]
+position = Vector2(7, 324)
+shape = SubResource("RectangleShape2D_22hd1")
+
+[node name="floor_roof" type="Node" parent="."]
+script = ExtResource("3_sqxo7")
+
+[node name="roof" parent="floor_roof" instance=ExtResource("3_i5m5d")]
+position = Vector2(597, 0)
+rotation = 3.14159
+
+[node name="floor" parent="floor_roof" instance=ExtResource("3_i5m5d")]
+position = Vector2(68, 648)
+
+[node name="object_spawner" type="Node" parent="."]
+script = ExtResource("5_0pi0y")
+
+[node name="Timer" type="Timer" parent="object_spawner"]
+autostart = true
+
+[connection signal="area_entered" from="CanvasLayer/Control/count_hitbox" to="CanvasLayer/Control" method="_on_count_hitbox_area_entered"]
+[connection signal="body_entered" from="floor_roof/roof" to="floor_roof" method="_on_roof_body_entered"]
+[connection signal="body_entered" from="floor_roof/floor" to="floor_roof" method="_on_floor_body_entered"]
+[connection signal="timeout" from="object_spawner/Timer" to="object_spawner" method="_on_timer_timeout"]
