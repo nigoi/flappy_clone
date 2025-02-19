@@ -36,9 +36,9 @@ rotation = -0.934738
 shape = SubResource("CapsuleShape2D_q0ni5")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D2"]
-position = Vector2(45.192, -79.3658)
+position = Vector2(5.02005, -49.7015)
 rotation = 0.934738
-scale = Vector2(4.94531, 5.17578)
+scale = Vector2(4.94531, 6.73633)
 texture = ExtResource("2_0dh6f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
