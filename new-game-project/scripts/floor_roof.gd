@@ -9,7 +9,7 @@ func find_roof_floor():
 
 func _on_roof_body_entered(body: Node2D) -> void:
 	get_tree().reload_current_scene()
-
+ 
 func _on_floor_body_entered(body: Node2D) -> void:
 	get_tree().reload_current_scene()
 
