@@ -1,17 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://r3p74t3jtwtm"]
+[gd_scene load_steps=7 format=3 uid="uid://r3p74t3jtwtm"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_yr2g6"]
-[ext_resource type="Texture2D" uid="uid://jj6r23v4juce" path="res://icon.svg" id="2_bernl"]
+[ext_resource type="Texture2D" uid="uid://bcnt8ebq7dq31" path="res://sprites/angel_sprite_sheet.png" id="2_vsbgc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_80ijc"]
-size = Vector2(83.25, 84.5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5einh"]
+atlas = ExtResource("2_vsbgc")
+region = Rect2(0, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s44q"]
+atlas = ExtResource("2_vsbgc")
+region = Rect2(33, 0, 33, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cq7eb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5einh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s44q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwce5"]
+radius = 12.7864
+height = 85.1911
 
 [node name="RigidBody2D" type="RigidBody2D"]
 script = ExtResource("1_yr2g6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_80ijc")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.515625, -0.499998)
+scale = Vector2(2.53125, 2.53125)
+sprite_frames = SubResource("SpriteFrames_cq7eb")
+frame_progress = 0.94582
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.650391, 0.667506)
-texture = ExtResource("2_bernl")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -3)
+rotation = 0.557122
+shape = SubResource("CapsuleShape2D_xwce5")

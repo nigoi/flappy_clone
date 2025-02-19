@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://by45yp3nu5l1t"]
+[gd_scene load_steps=11 format=3 uid="uid://by45yp3nu5l1t"]
 
 [ext_resource type="PackedScene" uid="uid://r3p74t3jtwtm" path="res://scenes/player.tscn" id="1_3xngw"]
 [ext_resource type="Script" path="res://scripts/UI.gd" id="2_7gphw"]
 [ext_resource type="PackedScene" uid="uid://d85n6xrsfsrv" path="res://scenes/world_barrier.tscn" id="3_i5m5d"]
 [ext_resource type="Script" path="res://scripts/floor_roof.gd" id="3_sqxo7"]
 [ext_resource type="Script" path="res://scripts/object_spawner.gd" id="5_0pi0y"]
+[ext_resource type="Script" path="res://scripts/parallax_background.gd" id="6_vqwo7"]
+[ext_resource type="Texture2D" uid="uid://boxcuc88h5hc2" path="res://sprites/background2.png" id="7_b13ht"]
+[ext_resource type="Texture2D" uid="uid://da6yyxsxg8ieq" path="res://sprites/CLOUD_LAYER.png" id="8_kq1o2"]
+[ext_resource type="Texture2D" uid="uid://cbyne5al1pubf" path="res://sprites/MIDDLEGROUND.png" id="9_ua8lh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22hd1"]
 size = Vector2(34, 668)
@@ -82,6 +86,38 @@ script = ExtResource("5_0pi0y")
 
 [node name="Timer" type="Timer" parent="object_spawner"]
 autostart = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer2"]
+scroll_ignore_camera_zoom = true
+script = ExtResource("6_vqwo7")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer2/ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer2/ParallaxBackground/ParallaxLayer"]
+position = Vector2(576, 320)
+scale = Vector2(3.6, 3.55556)
+texture = ExtResource("7_b13ht")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer2/ParallaxBackground"]
+motion_scale = Vector2(1.3, 1.3)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="CloudLayer" type="Sprite2D" parent="CanvasLayer2/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(575.111, 324)
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("8_kq1o2")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="CanvasLayer2/ParallaxBackground"]
+motion_scale = Vector2(1.7, 1.7)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Middleground" type="Sprite2D" parent="CanvasLayer2/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(592, 500)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("9_ua8lh")
 
 [connection signal="area_entered" from="CanvasLayer/Control/count_hitbox" to="CanvasLayer/Control" method="_on_count_hitbox_area_entered"]
 [connection signal="body_entered" from="floor_roof/roof" to="floor_roof" method="_on_roof_body_entered"]

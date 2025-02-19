@@ -8,10 +8,10 @@ func find_roof_floor():
 	floor.position.y = viewport.y - 10
 
 func _on_roof_body_entered(body: Node2D) -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/loss_menu.tscn")
  
 func _on_floor_body_entered(body: Node2D) -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/loss_menu.tscn")
 
 func _ready() -> void:
 	find_roof_floor()

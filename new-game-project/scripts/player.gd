@@ -13,6 +13,7 @@ func _ready() -> void:
 func movement(delta):
 	if Input.is_action_just_pressed("space"):
 		velocity.y = lerp(velocity.y, -1.0, 0.9)
+		$AnimatedSprite2D.play()
 	else:
 		velocity.y = lerp(velocity.y, 1.0, 0.05)
 	var collide = move_and_collide(velocity * speed * delta)
