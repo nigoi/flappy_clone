@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends RigidBody2D 
 var speed = 600
 var velocity = Vector2.ZERO
 var pause_game = true
@@ -11,9 +11,10 @@ func _ready() -> void:
 	center_sprite()
 
 func movement(delta):
-	if Input.is_action_just_pressed("space"):
-		velocity.y = lerp(velocity.y, -1.0, 0.9)
+	if Input.is_action_pressed("space"):
+		velocity.y = lerp(velocity.y, -1.0, 0.2)
 		$AnimatedSprite2D.play()
+		$AudioStreamPlayer2D.play()
 	else:
 		velocity.y = lerp(velocity.y, 1.0, 0.05)
 	var collide = move_and_collide(velocity * speed * delta)

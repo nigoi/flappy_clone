@@ -8,4 +8,8 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func _ready() -> void:
-	label.text = "HIGH SCORE! " + str(Global.high_score)
+	if Global.high_score > Global.old_high_score:
+		$AudioStreamPlayer2D.play()
+		label.text = "HIGH SCORE! " + str(Global.high_score)
+		Global.old_high_score = Global.high_score
+	

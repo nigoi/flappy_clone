@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjxjtijolje7c"]
+[gd_scene load_steps=5 format=3 uid="uid://cjxjtijolje7c"]
 
 [ext_resource type="Texture2D" uid="uid://b0mt7kn3hiy4" path="res://sprites/MENU_BACKGROUND.png" id="1_bcja1"]
 [ext_resource type="Script" path="res://scripts/loss_menu.gd" id="1_nt46w"]
 [ext_resource type="Texture2D" uid="uid://bpykaj26hie75" path="res://sprites/MENU.png" id="2_h057s"]
+[ext_resource type="AudioStream" uid="uid://pstgqbwrxsdm" path="res://sounds/high_score.wav" id="4_ba08u"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -66,6 +67,10 @@ theme_override_colors/font_color = Color(0.67451, 0.196078, 0.196078, 1)
 theme_override_font_sizes/font_size = 80
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ba08u")
+volume_db = 2.971
 
 [connection signal="pressed" from="Control/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/exit" to="." method="_on_exit_pressed"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://e5f0by8kja3q" path="res://sprites/FLAMES.png" id="3_sd0a8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g6g2"]
-size = Vector2(97.4736, 323)
+size = Vector2(56.2214, 304.178)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q0ni5"]
 radius = 114.0
@@ -17,9 +17,18 @@ collision_mask = 3
 script = ExtResource("1_440i4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(39, 96)
+position = Vector2(97.1325, 63.0853)
 rotation = 0.209545
 shape = SubResource("RectangleShape2D_1g6g2")
+
+[node name="Flames" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(3.96141, -77.5197)
+rotation = 0.0182734
+scale = Vector2(1.46762, 3.72836)
+texture = ExtResource("3_sd0a8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(184, 650)
@@ -31,11 +40,5 @@ position = Vector2(45.192, -79.3658)
 rotation = 0.934738
 scale = Vector2(4.94531, 5.17578)
 texture = ExtResource("2_0dh6f")
-
-[node name="Flames" type="Sprite2D" parent="."]
-position = Vector2(59, 21)
-rotation = 0.227818
-scale = Vector2(1.46762, 3.72836)
-texture = ExtResource("3_sd0a8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

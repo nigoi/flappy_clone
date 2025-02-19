@@ -1,5 +1,4 @@
 extends Node
-var label = null
 var start_spawning = false
 var viewport_dimensions = Vector2.ZERO
 
@@ -16,7 +15,6 @@ func object_spawn_randomiser():
 	add_child(rand_instance)
 
 func _ready() -> void:
-	var label = get_tree().current_scene.get_node("CanvasLayer/Control/Panel/Label")
 	viewport_dimensions = get_viewport().size
 
 func _input(event: InputEvent) -> void:
