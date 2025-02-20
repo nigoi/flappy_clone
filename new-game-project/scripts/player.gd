@@ -7,9 +7,6 @@ func center_sprite():
 	var center = get_viewport().size / 2
 	position = center
 
-func _ready() -> void:
-	center_sprite()
-
 func movement(delta):
 	if Input.is_action_pressed("space"):
 		velocity.y = lerp(velocity.y, -1.0, 0.2)

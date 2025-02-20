@@ -7,15 +7,17 @@
 
 [node name="Control" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 script = ExtResource("1_nt46w")
 
 [node name="MenuBackground" type="Sprite2D" parent="."]
-position = Vector2(577.5, 324.5)
-scale = Vector2(3.58437, 3.55)
+position = Vector2(567, 322)
+scale = Vector2(3.9875, 3.84444)
 texture = ExtResource("1_bcja1")
 
 [node name="Control" type="Control" parent="."]

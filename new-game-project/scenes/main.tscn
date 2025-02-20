@@ -19,6 +19,7 @@ size = Vector2(34, 668)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("1_3xngw")]
 top_level = true
+position = Vector2(616, 320)
 gravity_scale = 0.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -114,38 +115,6 @@ script = ExtResource("5_0pi0y")
 [node name="Timer" type="Timer" parent="object_spawner"]
 autostart = true
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer2"]
-scroll_ignore_camera_zoom = true
-script = ExtResource("6_vqwo7")
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer2/ParallaxBackground"]
-motion_mirroring = Vector2(1152, 0)
-
-[node name="Background" type="Sprite2D" parent="CanvasLayer2/ParallaxBackground/ParallaxLayer"]
-position = Vector2(576, 320)
-scale = Vector2(3.6, 3.55556)
-texture = ExtResource("7_b13ht")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer2/ParallaxBackground"]
-motion_scale = Vector2(1.3, 1.3)
-motion_mirroring = Vector2(1152, 0)
-
-[node name="CloudLayer" type="Sprite2D" parent="CanvasLayer2/ParallaxBackground/ParallaxLayer2"]
-position = Vector2(575.111, 324)
-scale = Vector2(3.6, 3.6)
-texture = ExtResource("8_kq1o2")
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="CanvasLayer2/ParallaxBackground"]
-motion_scale = Vector2(1.7, 1.7)
-motion_mirroring = Vector2(1152, 0)
-
-[node name="Middleground" type="Sprite2D" parent="CanvasLayer2/ParallaxBackground/ParallaxLayer3"]
-position = Vector2(592, 500)
-scale = Vector2(3.7, 3.7)
-texture = ExtResource("9_ua8lh")
-
 [node name="count_hitbox" type="Area2D" parent="."]
 light_mask = 2
 visibility_layer = 2
@@ -156,6 +125,48 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="count_hitbox"]
 position = Vector2(7, 324)
 shape = SubResource("RectangleShape2D_22hd1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Control"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Control/CanvasLayer2"]
+scroll_ignore_camera_zoom = true
+script = ExtResource("6_vqwo7")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Control/CanvasLayer2/ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Background" type="Sprite2D" parent="Control/CanvasLayer2/ParallaxBackground/ParallaxLayer"]
+position = Vector2(576, 320)
+scale = Vector2(3.6, 3.55556)
+texture = ExtResource("7_b13ht")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Control/CanvasLayer2/ParallaxBackground"]
+motion_scale = Vector2(1.3, 1.3)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="CloudLayer" type="Sprite2D" parent="Control/CanvasLayer2/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(575.111, 324)
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("8_kq1o2")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Control/CanvasLayer2/ParallaxBackground"]
+motion_scale = Vector2(1.7, 1.7)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Middleground" type="Sprite2D" parent="Control/CanvasLayer2/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(592, 500)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("9_ua8lh")
 
 [connection signal="body_entered" from="floor_roof/roof" to="floor_roof" method="_on_roof_body_entered"]
 [connection signal="body_entered" from="floor_roof/floor" to="floor_roof" method="_on_floor_body_entered"]

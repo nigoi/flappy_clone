@@ -1,5 +1,5 @@
 extends Area2D
-var speed = 600
+var speed = 700
 
 func _on_body_entered(body: Node2D) -> void:
 	$AudioStreamPlayer2D.play()
